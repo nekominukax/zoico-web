@@ -1,0 +1,1000 @@
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  scrollbar-gutter: stable both-edges;
+  
+}
+
+body, html {
+   height: 100dvh; 
+   width: 100%; 
+   background: #0e1a26; 
+   overflow-x: hidden;
+   
+
+   display: flex; 
+   justify-content: center; 
+   align-items: center; 
+  }
+.bookWrapper{
+  position:relative;
+}
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.demoPage{
+    background: #fff;
+    color:black;
+}
+.cover {
+  background: url("/portada3.png") center center no-repeat;
+  color: white;
+  font-weight: bold;
+}
+.page {
+  background: url("/fondoDentro.png") center center no-repeat;
+  filter: brightness(1);
+  filter: saturate(1);
+  border-radius: 5px;
+  gap:40px;
+
+  padding:20px;
+}
+.zoico-logo {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+.page-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.textCard{ width:450px; background:rgba(245, 245, 245, 0.8); padding:5px; border-radius:10px; color:#333;margin-bottom:15px;box-shadow:0 10px 25px rgba(0,0,0,0.25); }
+.textCard h2{
+  margin-top:1px; /* menos espacio arriba */
+  margin-bottom:5px; /* margen inferior entre título y primer párrafo */
+}
+
+.textCard p{
+  margin-top:0px; /* quita el espacio extra arriba del párrafo */
+  margin-bottom:5px; /* espacio entre párrafos */
+}
+.aboutPage{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.aboutLeftColumn{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.aboutContainer{
+  display:flex;
+  justify-content:center;
+  gap:120px;
+  max-width:1600px;
+  perspective:1200px;
+  align-items:center;
+}
+.aboutCardLink{
+  display:block;
+  cursor:pointer;
+  transform-style: preserve-3d;
+}
+.aboutLeft,
+.aboutRight{
+  width:300px;
+}
+
+.aboutCard{
+  width:600px;
+  display:block;
+  max-width:40vw;
+  transition: transform 0.15s ease;
+  transform-style: preserve-3d;
+  filter: brightness(1.1);
+}
+.retorno{
+width:28%;
+cursor:pointer;
+position:absolute; 
+top:0;
+left:0;
+
+}
+.retorno:hover{
+  width:30%;
+  filter: brightness(1.1);
+  position:absolute; 
+top:0;
+left:0;
+
+}
+.infoCard{
+
+  width:250px;
+  
+
+  background:rgba(255,255,255,0.75);
+  backdrop-filter: blur(6px);
+
+  border-radius:12px;
+
+  padding:5px;
+  margin-top:0px;
+  margin-bottom: 10px;
+  overflow:hidden;
+
+  transition:all 0.35s ease;
+
+  max-height:30px;
+}
+.infoCard:hover{
+  max-height:200px;
+  transform:translateY(-5px);
+}
+
+.infoCard:hover .infoContent{
+  opacity:1;
+  transform:translateY(0);
+}
+
+
+
+/* TEXTO DEL NOMBRE */
+
+.infoHeader{
+  font-size:18px;
+  font-weight:bold;
+  color:#333;
+}
+
+
+/* TEXTO OCULTO */
+
+.infoContent{
+
+  margin-top:10px;
+
+  color:#444;
+
+  opacity:0;
+
+  transform:translateY(-10px);
+
+  transition:all 0.3s ease;
+}
+
+
+/* HOVER: CRECE LA TARJETA */
+
+.infoCard:hover{
+
+  max-height:200px;
+
+  transform:translateY(-5px);
+}
+
+
+/* REVELA EL TEXTO */
+
+.infoCard:hover .infoContent{
+
+  opacity:1;
+
+  transform:translateY(0);
+}
+.background{
+  min-height:100vh;
+  background:url("/holii.png") center center no-repeat;
+  background-size:cover;
+  background-attachment: fixed;
+}
+
+.scene{
+  position:relative;
+  width:1500px;
+  height:1000px;
+  margin-top:200px;
+ 
+}
+.cards{
+  position:absolute;
+  width:100%;
+  top: 17%;
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  
+}
+.box{
+  position:absolute;
+  width:23%;
+  left:46%;
+  top:300px;
+  z-index:4;
+  cursor:pointer;
+  filter: brightness(1.25);
+  transition: transform 0.2s ease;
+}
+
+.card{
+  width:200px;
+  position:relative;
+  transition: transform .35s ease, filter .2s ease;
+  z-index:3;
+}
+.card img{
+  width:100%;
+  pointer-events:none;
+}
+
+
+.card:hover{
+  filter: brightness(1.25);
+  z-index:10;
+  
+}
+.box:hover{
+  transform: scale(1.02);
+  filter: brightness(1.4);
+}
+.cardsOpen .card1:hover{
+  transform:translate(100px,-25px) rotate(-20deg) scale(1.15);
+}
+
+.cardsOpen .card2:hover{
+  transform:translate(50px,-85px) rotate(-5deg) scale(1.15);
+}
+
+.cardsOpen .card3:hover{
+  transform:translate(0px,-60px) rotate(20deg) scale(1.15);
+}
+.card1{
+  transform: translate(300px, 250px) rotate(-5deg) scale(0.8);
+}
+
+.card2{
+  transform: translate(100px, 250px) rotate(0deg) scale(0.8);
+}
+
+.card3{
+  transform: translate(-100px, 250px) rotate(5deg) scale(0.8);
+}
+
+.cardsOpen .card1{
+  transform:translate(100px,-20px) rotate(-20deg) scale(1.05);
+}
+
+.cardsOpen .card2{
+  transform:translate(50px,-80px) rotate(-5deg) scale(1.05);
+}
+
+.cardsOpen .card3{
+  transform:translate(0px,-55px) rotate(20deg) scale(1.05);
+}
+.artPage{
+  width:100vw;
+  height:100vh;
+  position:relative;
+}
+
+/* BOTÓN ATRÁS */
+
+.returnButton{
+width:28%;
+cursor:pointer;
+position:absolute; 
+top:0;
+left:0;
+}
+
+.returnIcon{
+  width:28%;
+position:absolute; 
+  cursor:pointer;
+}
+.returnIcon:hover{
+    width:30%;
+  filter: brightness(1.1);
+  position:absolute; 
+top:0;
+left:0;
+}
+
+/* CATEGORÍAS */
+
+.categories{
+
+  position:absolute;
+
+  top:30px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  display:flex;
+
+  gap:25px;
+
+  z-index:3000;
+}
+
+.category{
+
+  padding:15px 35px;
+
+  border-radius:12px;
+
+  cursor:pointer;
+
+  transition:.25s;
+}
+
+.category:hover{
+  transform:scale(1.08);
+}
+
+
+/* MAZO */
+
+.deckContainer{
+
+  width:100%;
+  height:100%;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:flex-start;
+
+  padding-top:180px;
+}
+
+.deck{
+
+  width:220px;
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+.deck:hover{
+
+  transform:
+  translateY(-10px)
+  scale(1.05);
+}
+
+/* CARTAS */
+
+.fan{
+
+  position:absolute;
+
+  top:30%;
+  left:43%;
+
+  transform:translate(-50%,-50%);
+}
+
+.fanCard{
+
+  position:absolute;
+
+  width:280px;
+  
+
+  cursor:pointer;
+
+    transition:
+    transform .25s ease,
+    scale .25s ease;
+}
+
+.fanCard:hover{
+
+  scale:1.2;
+
+  z-index:999;
+}
+
+/* OVERLAY */
+
+.overlay{
+
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(0,0,0,.85);
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  z-index:10000;
+}
+
+.bigCard{
+
+  height:90vh;
+
+  width:auto;
+}
+
+.pageControls{
+
+  position:absolute;
+
+  bottom:40px;
+
+  left:50%;
+
+  transform:translateX(-50%);
+
+  display:flex;
+
+  align-items:center;
+
+  gap:20px;
+
+  z-index:100;
+}
+
+.pageControls button{
+
+  width:50px;
+  height:50px;
+
+  border:none;
+
+  border-radius:50%;
+
+  cursor:pointer;
+
+  font-size:20px;
+}
+
+.pageControls span{
+
+  font-size:20px;
+}
+.pageControls button:disabled{
+  opacity:0.3;
+  cursor:default;
+}
+
+.categoryImage{
+
+  width:140px;
+
+  filter:brightness(1.35);
+
+  transition:
+    transform .2s ease,
+    filter .2s ease;
+}
+
+.categoryImage:hover{
+
+  filter:brightness(1.55);
+
+  transform:translateY(-3px)
+  scale(1.15);
+}
+
+.activeCategory{
+
+  filter:brightness(1.55);
+
+  transform:
+  translateY(-3px)
+  scale(1.15);
+}
+@keyframes deckClick {
+
+  0%{
+    transform:translateY(0) scale(1);
+  }
+
+  50%{
+    transform:translateY(-8px) scale(1.12);
+  }
+
+  100%{
+    transform:translateY(0) scale(1);
+  }
+
+}
+
+.deckClicked{
+  animation:deckClick .25s ease;
+}
+
+.desktopBanner{
+  display:block;
+}
+
+.mobileBanner{
+  display:none;
+}
+
+.otherProjects{
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  margin-top:-150px;
+
+}
+
+.otherProjects h2{
+
+  color:#0E2A41;
+
+  font-size:20px;
+
+  text-shadow:none;
+
+}
+
+.projectBanner{
+  width:100%;
+  max-width:100%;
+  height:auto;
+}
+
+
+.homePage{
+  width:100%;
+  
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.instagramLink{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  color:#444;
+  text-decoration:none;
+}
+
+.instagramLink:hover{
+  text-decoration:underline;
+}
+
+.instagramIcon{
+  width:40px;
+  height:40px;
+}
+
+.instagramTag{
+  font-size:1.1rem;
+  font-weight:600;
+
+  background:linear-gradient(
+    45deg,
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.linkedinLink{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  color:#444;
+  text-decoration:none;
+}
+.linkedinIcon{
+  width:30px;
+  height:30px;
+}
+.linkedinTag{
+font-size:1.1rem;
+  font-weight:600;
+  background-color: #0077B5;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+}
+.linkedinLink:hover{
+  text-decoration:underline;
+}
+@keyframes floatCard1{
+  0%,100%{
+    transform:translate(40px,-110%) rotate(-20deg) scale(1.2);
+  }
+  50%{
+    transform:translate(40px,calc(-110% - 8px)) rotate(-20deg) scale(1.2);
+  }
+}
+
+@keyframes floatCard2{
+  0%,100%{
+    transform:translate(0px,-140%) rotate(-5deg) scale(1.3);
+  }
+  50%{
+    transform:translate(0px,calc(-140% - 8px)) rotate(-5deg) scale(1.3);
+  }
+}
+
+@keyframes floatCard3{
+  0%,100%{
+    transform:translate(-40px,-110%) rotate(20deg) scale(1.20);
+  }
+  50%{
+    transform:translate(-40px,calc(-110% - 8px)) rotate(20deg) scale(1.20);
+  }
+}
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:scale(.96);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+
+}
+@media (max-width: 768px){
+
+  .aboutSeparator{
+    height:2px;
+    border:none;
+    background:linear-gradient(
+        to right,
+        transparent,
+        rgba(0,0,0,.25),
+        transparent
+    );
+    
+}
+  .aboutMobileCard{
+
+    width:90vw;
+    max-width:420px;
+
+    margin-top:80px;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.aboutMobileCard:active{
+
+    transform:scale(.97);
+
+}
+
+.aboutBack{
+
+    background:rgba(255,255,255,.9);
+
+    border-radius:15px;
+
+    padding:25px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+
+    animation:fadeIn .25s ease;
+}
+
+.aboutBack h2{
+
+    margin-top:20px;
+    margin-bottom:8px;
+
+}
+
+.aboutBack h2:first-child{
+
+    margin-top:0;
+
+}
+  .scene{
+    width:100vw;
+    height:60vh;
+
+  }
+
+  .box{
+    width:60%;
+    top:20px;
+    left:25%
+
+  }
+.cardsOpen .card1{
+  transform:translate(40px,-80%) rotate(-20deg) scale(1.2);
+  animation:floatCard1 2.5s ease-in-out infinite;
+  animation-fill-mode:backwards;
+}
+
+.cardsOpen .card2{
+  transform:translate(0px,-10%) rotate(-5deg) scale(1.3);
+  animation:floatCard2 2.5s ease-in-out infinite;
+  animation-delay:-.8s;
+  animation-fill-mode:backwards;
+}
+
+.cardsOpen .card3{
+  transform:translate(-40px,-80%) rotate(20deg) scale(1.2);
+  animation:floatCard3 2.5s ease-in-out infinite;
+  animation-delay:-1.6s;
+  animation-fill-mode:backwards;
+}
+  .card{
+    width:120px;
+    transition:transform .5s ease;
+  }
+  .card1{
+  
+  transform: translate(130%, 40%) rotate(-5deg) scale(0.8);
+}
+
+.card2{
+  
+  transform: translate(40%, 40%) rotate(0deg) scale(0.8);
+}
+
+.card3{
+  
+  transform: translate(-100%, 40%) rotate(5deg) scale(0.8);
+}
+
+
+.card:hover{
+  filter: brightness(1.25);
+  z-index:10;
+  
+}
+.box:hover{
+  transform: scale(1.02);
+  filter: brightness(1.4);
+}
+  .otherProjects h2{
+    margin-top:80px;
+  }
+  .desktopBanner{
+    display:none;
+  }
+
+  .mobileBanner{
+    width:100%;
+    max-height:180px;
+    display:block;
+  }
+
+
+.retorno{
+width:50%;
+cursor:pointer;
+position:absolute; 
+top:0;
+left:0;
+
+}
+.retorno:hover{
+  width:60%;
+  filter: brightness(1.1);
+  position:absolute; 
+top:0;
+left:0;
+
+}
+
+
+.returnButton{
+width:50%;
+cursor:pointer;
+position:absolute; 
+top:0;
+left:0;
+}
+
+.returnIcon{
+  width:50%;
+position:absolute; 
+  cursor:pointer;
+}
+.returnIcon:hover{
+    width:60%;
+  filter: brightness(1.1);
+  position:absolute; 
+top:0;
+left:0;
+}
+
+
+
+
+.aboutPage{
+  min-height:50vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.aboutLeftColumn{
+  display:flex;
+  flex-direction:column;
+}
+.aboutContainer{
+  display:flex;
+  justify-content:center;
+
+  max-width:600px;
+
+  align-items:center;
+}
+.aboutCardLink{
+  display:block;
+  cursor:pointer;
+  transform-style: preserve-3d;
+}
+.aboutLeft,
+.aboutRight{
+  width:100px;
+}
+
+.aboutCard{
+  width:1000px;
+  display:block;
+  max-width:90vw;
+  transition: transform 0.15s ease;
+  transform-style: preserve-3d;
+  filter: brightness(1.1);
+}
+    
+
+ .textCard{
+    width:100%;
+  }
+    .instrucciones-imagen img{
+    max-width:100%;
+    height:auto;
+  }
+
+.cover {
+  background: url("/portada3.png") center center no-repeat;
+  color: white;
+  font-weight: bold;
+  background-size:cover;
+}
+.bookWrapper{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.categories{
+
+  position:fixed;
+
+  bottom:20px;
+  top:auto;
+
+  left:50%;
+  transform:translateX(-50%);
+
+  display:flex;
+  gap:18px;
+
+  z-index:5000;
+}
+
+.mobileGallery{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding-top:170px;
+
+}
+.mobileCard{
+
+    width:80vw;
+
+    max-width:320px;
+
+    transition:.2s;
+
+}
+.mobileCard:active{
+
+    transform:scale(.97);
+
+}
+.mobileControls{
+
+    margin-top:25px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+    
+
+}
+.mobileControls button{
+
+    width:45px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:50%;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+}
+.mobileControls span{
+
+    
+    font-size:18px;
+    font-weight:600;
+    color:#333;
+
+}
+.categoryImage{
+
+    width:75px;
+}
+
+}
