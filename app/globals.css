@@ -638,14 +638,14 @@ inset 0 -2px 5px rgba(0,70,170,.15);
   0%,
   100%{
     transform:
-      translate(-120%, 0)
+      translate(-120%, -20px)
       rotate(-18deg)
       scale(1);
   }
 
   50%{
     transform:
-      translate(-120%, -7px)
+      translate(-120%, -27px)
       rotate(-18deg)
       scale(1);
   }
@@ -1316,10 +1316,10 @@ font-size:1.1rem;
 
 .homePage .cardsOpen .card1{
   transform:
-    translate(-130%, 0)
+    translate(-120%, -20px)
     rotate(-18deg)
     scale(1);
-    
+
   animation:mobileFloatCard1 2.5s ease-in-out infinite;
 }
 
