@@ -1316,7 +1316,7 @@ font-size:1.1rem;
 
 .homePage .cardsOpen .card1{
   transform:
-    translate(-120%, -10px)
+    translate(-130%, 0)
     rotate(-18deg)
     scale(1);
     
@@ -1344,7 +1344,7 @@ font-size:1.1rem;
 /* En móvil no queremos los transforms de hover del escritorio */
 .homePage .cardsOpen .card1:hover{
   transform:
-    translate(-120%, 0)
+    translate(-130%, 0)
     rotate(-18deg)
     scale(1.04);
 
