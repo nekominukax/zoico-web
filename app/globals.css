@@ -1316,7 +1316,7 @@ font-size:1.1rem;
 
 .homePage .cardsOpen .card1{
   transform:
-    translate(-120%, 0)
+    translate(-120%, -10px)
     rotate(-18deg)
     scale(1);
     

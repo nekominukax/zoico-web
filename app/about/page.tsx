@@ -84,7 +84,7 @@ if (isMobile) {
 
             <h2>Miguel Andújar</h2>
 
-            <p>Master mind behind Zoico and mechanic designer.</p>
+            <p>Master mind behind Zoico and gameplay designer.</p>
             <br />
 
             <a
