@@ -634,6 +634,56 @@ inset 0 -2px 5px rgba(0,70,170,.15);
   translateY(-3px)
   scale(1.15);
 }
+@keyframes mobileFloatCard1{
+  0%,
+  100%{
+    transform:
+      translate(-120%, 0)
+      rotate(-18deg)
+      scale(1);
+  }
+
+  50%{
+    transform:
+      translate(-120%, -7px)
+      rotate(-18deg)
+      scale(1);
+  }
+}
+
+@keyframes mobileFloatCard2{
+  0%,
+  100%{
+    transform:
+      translate(-50%, -35px)
+      rotate(-3deg)
+      scale(1.06);
+  }
+
+  50%{
+    transform:
+      translate(-50%, -42px)
+      rotate(-3deg)
+      scale(1.06);
+  }
+}
+
+@keyframes mobileFloatCard3{
+  0%,
+  100%{
+    transform:
+      translate(20%, 0)
+      rotate(18deg)
+      scale(1);
+  }
+
+  50%{
+    transform:
+      translate(20%, -7px)
+      rotate(18deg)
+      scale(1);
+  }
+}
 @keyframes deckClick {
 
   0%{
@@ -1114,69 +1164,268 @@ font-size:1.1rem;
     margin-top:0;
 
 }
-  .scene{
-    width:100vw;
-    height:60vh;
-
-  }
-
-  .box{
-    width:60%;
-    top:20px;
-    left:25%
-
-  }
-.cardsOpen .card1{
-  transform:translate(40px,-80%) rotate(-20deg) scale(1.2);
-  animation:floatCard1 2.5s ease-in-out infinite;
-  animation-fill-mode:backwards;
-}
-
-.cardsOpen .card2{
-  transform:translate(0px,-10%) rotate(-5deg) scale(1.3);
-  animation:floatCard2 2.5s ease-in-out infinite;
-  animation-delay:-.8s;
-  animation-fill-mode:backwards;
-}
-
-.cardsOpen .card3{
-  transform:translate(-40px,-80%) rotate(20deg) scale(1.2);
-  animation:floatCard3 2.5s ease-in-out infinite;
-  animation-delay:-1.6s;
-  animation-fill-mode:backwards;
-}
-  .card{
-    width:120px;
-    transition:transform .5s ease;
-  }
-  .card1{
   
-  transform: translate(130%, 40%) rotate(-5deg) scale(0.8);
+/* =====================================================
+   HOME — VERSIÓN MÓVIL
+   ===================================================== */
+
+.homePage{
+  width:100%;
+  min-height:100dvh;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  overflow-x:hidden;
 }
 
-.card2{
-  
-  transform: translate(40%, 40%) rotate(0deg) scale(0.8);
+/* Reserva todo el espacio de la caja y las cartas */
+.homePage .scene{
+  position:relative;
+
+  width:100%;
+  height:clamp(650px, 92dvh, 780px);
+
+  margin:0;
+
+  flex-shrink:0;
 }
 
-.card3{
-  
-  transform: translate(-100%, 40%) rotate(5deg) scale(0.8);
+/* Texto de ayuda */
+.homePage .deckHint{
+  position:absolute;
+
+  top:55px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  width:100%;
+
+  padding:0 16px;
+
+  color:#0e2a41;
+
+  font-size:clamp(22px, 7vw, 30px);
+  font-weight:700;
+  line-height:1.1;
+  text-align:center;
+
+  pointer-events:none;
+  z-index:20;
+
+  animation:deckHintFade 2.2s ease-in-out infinite;
 }
 
+/* Caja / mazo */
+.homePage .box{
+  position:absolute;
 
-.card:hover{
-  filter: brightness(1.25);
+  top:175px;
+  left:50%;
+
+  width:min(68vw, 300px);
+  height:auto;
+
+  transform:translateX(-50%);
+
+  z-index:4;
+
+  cursor:pointer;
+
+  filter:brightness(1.25);
+
+  transition:
+    transform .2s ease,
+    filter .2s ease;
+}
+
+.homePage .box:hover{
+  transform:translateX(-50%) scale(1.02);
+  filter:brightness(1.4);
+}
+
+/* Contenedor de las tres cartas */
+.homePage .cards{
+  position:absolute;
+
+  top:105px;
+  left:50%;
+
+  width:100%;
+  height:360px;
+
+  transform:translateX(-50%);
+
+  display:block;
+
+  z-index:3;
+}
+
+/* Las tres cartas ocupan la misma posición base */
+.homePage .card{
+  position:absolute;
+
+  top:0;
+  left:50%;
+
+  width:clamp(105px, 34vw, 145px);
+
+  transition:
+    transform .5s ease,
+    filter .2s ease;
+
+  transform-origin:center center;
+
+  z-index:3;
+}
+
+.homePage .card img{
+  display:block;
+  width:100%;
+  height:auto;
+
+  pointer-events:none;
+}
+
+/* CARTAS CERRADAS: detrás del mazo */
+
+.homePage .card1{
+  transform:
+    translate(-62%, 175px)
+    rotate(-5deg)
+    scale(.8);
+}
+
+.homePage .card2{
+  transform:
+    translate(-50%, 175px)
+    rotate(0deg)
+    scale(.8);
+}
+
+.homePage .card3{
+  transform:
+    translate(-38%, 175px)
+    rotate(5deg)
+    scale(.8);
+}
+
+/* CARTAS ABIERTAS */
+
+.homePage .cardsOpen .card1{
+  transform:
+    translate(-120%, 0)
+    rotate(-18deg)
+    scale(1);
+    
+  animation:mobileFloatCard1 2.5s ease-in-out infinite;
+}
+
+.homePage .cardsOpen .card2{
+  transform:
+    translate(-50%, -35px)
+    rotate(-3deg)
+    scale(1.06);
+
+  animation:mobileFloatCard2 2.5s ease-in-out infinite -.8s;
+}
+
+.homePage .cardsOpen .card3{
+  transform:
+    translate(20%, 0)
+    rotate(18deg)
+    scale(1);
+
+  animation:mobileFloatCard3 2.5s ease-in-out infinite -1.6s;
+}
+
+/* En móvil no queremos los transforms de hover del escritorio */
+.homePage .cardsOpen .card1:hover{
+  transform:
+    translate(-120%, 0)
+    rotate(-18deg)
+    scale(1.04);
+
   z-index:10;
-  
 }
-.box:hover{
-  transform: scale(1.02);
-  filter: brightness(1.4);
+
+.homePage .cardsOpen .card2:hover{
+  transform:
+    translate(-50%, -35px)
+    rotate(-3deg)
+    scale(1.1);
+
+  z-index:10;
 }
-  .otherProjects h2{
-    margin-top:80px;
-  }
+
+.homePage .cardsOpen .card3:hover{
+  transform:
+    translate(20%, 0)
+    rotate(18deg)
+    scale(1.04);
+
+  z-index:10;
+}
+
+/* PROYECTO DE MIGUEL */
+
+.homePage .otherProjects{
+  width:100%;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  margin:0;
+  padding:0;
+
+  flex-shrink:0;
+}
+
+.homePage .otherProjects h2{
+  width:100%;
+
+  margin:0;
+  padding:14px 16px;
+
+  color:#0e2a41;
+
+  font-size:clamp(20px, 6vw, 28px);
+  line-height:1.1;
+  text-align:center;
+
+  text-shadow:none;
+}
+
+/* Banner de escritorio oculto */
+.homePage .desktopBanner{
+  display:none;
+}
+
+/* Banner específico de móvil */
+.homePage .mobileBanner{
+  display:block;
+
+  width:100%;
+  max-width:none;
+  max-height:none;
+
+  height:auto;
+
+  object-fit:contain;
+}
+
+/* Por si solo tienes projectBanner y no mobileBanner */
+.homePage .projectBanner{
+  display:block;
+
+  width:100%;
+  max-width:100%;
+
+  height:auto;
+}
   .desktopBanner{
     display:none;
   }
