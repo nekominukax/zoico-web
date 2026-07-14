@@ -239,12 +239,10 @@ left:0;
   transform:translateY(0);
 }
 .background{
-  width:100%;
-  min-height:100dvh;
-
+  min-height:100vh;
   background:url("/holii.png") center center no-repeat;
   background-size:cover;
-  background-attachment:fixed;
+  background-attachment: fixed;
 }
 .scene{
   position:relative;
@@ -715,15 +713,13 @@ inset 0 -2px 5px rgba(0,70,170,.15);
 }
 
 .otherProjects{
-
-  width:100vw;
-
-  margin-left:calc(50% - 50vw);
+  width:100%;
 
   display:flex;
   flex-direction:column;
   align-items:center;
 
+  margin-top:40px;
 }
 
 .otherProjects h2{
@@ -737,15 +733,9 @@ inset 0 -2px 5px rgba(0,70,170,.15);
 }
 
 .projectBanner{
-
-  width:100vw;
-
-  max-width:none;
-
+  width:100%;
+  max-width:100%;
   height:auto;
-
-  display:block;
-
 }
 
 
