@@ -39,11 +39,15 @@ if (isMobile) {
   return (
     <main className="aboutPage">
 
-      <div className="retorno">
-        <Link href="/">
-          <img src="/atras.png" className="retorno" />
-        </Link>
-      </div>
+     <div className="returnContainer">
+  <Link href="/">
+    <img
+      src="/atras.png"
+      className="returnIcon"
+      alt="Back"
+    />
+  </Link>
+</div>
 
       <div
         className={`aboutMobileCard ${showInfo ? "open" : ""}`}
@@ -199,7 +203,7 @@ if (isMobile) {
           </div>
 
           <div className="infoContent">
-            Master mind behind Zoico and mechanic designer.
+            Master mind behind Zoico and gameplay designer.
             <a
     href="https://www.linkedin.com/in/miguel-andujar-navarro-games/"
     target="_blank"

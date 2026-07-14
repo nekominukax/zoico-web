@@ -6,17 +6,48 @@ import Link from "next/link"
 
 export default function Book() {
   const [isMobile, setIsMobile] = useState(false)
+const [bookScale, setBookScale] = useState(1)
+const [viewportReady, setViewportReady] = useState(false)
+  
 
 useEffect(() => {
-  const checkMobile = () => {
-    setIsMobile(window.innerWidth <= 768)
+  const updateBookSize = () => {
+    const mobile = window.innerWidth <= 768
+
+    const pageWidth = mobile ? 320 : 500
+    const pageHeight = mobile ? 560 : 700
+
+    /*
+      En móvil hay una página visible.
+      En ordenador pueden verse dos páginas juntas.
+    */
+    const visibleBookWidth = mobile
+      ? pageWidth
+      : pageWidth * 2
+
+    const horizontalSpace = mobile ? 24 : 100
+    const verticalSpace = mobile ? 24 : 60
+
+    const widthScale =
+      (window.innerWidth - horizontalSpace) / visibleBookWidth
+
+    const heightScale =
+      (window.innerHeight - verticalSpace) / pageHeight
+
+    const nextScale = Math.min(widthScale, heightScale, 1)
+
+    setIsMobile(mobile)
+    setBookScale(nextScale)
+    setViewportReady(true)
   }
 
-  checkMobile()
+  updateBookSize()
 
-  window.addEventListener("resize", checkMobile)
+  window.addEventListener("resize", updateBookSize)
 
-  return () => window.removeEventListener("resize", checkMobile)
+  return () => {
+    window.removeEventListener("resize", updateBookSize)
+  }
 }, [])
 
 
@@ -76,7 +107,7 @@ useEffect(() => {
       
       nombre: "End of game",
       description21: "The game ends when a player runs out of cards, or when someone plays a “Sapience” card on an intelligent animal.",
-      imagen1:<img src="/sapiencia.png" style={{width:'80%',height:'auto', paddingLeft: '20%'}}/>,
+      imagen1:<img src="/Sapiencia.png" style={{width:'80%',height:'auto', paddingLeft: '20%'}}/>,
       description22: "When the game ends, each player counts their points, and the player with the most victory points wins.",
     },
     {
@@ -330,6 +361,9 @@ useEffect(() => {
   console.log("ANCHO:", window.innerWidth)
 }, [])
 console.log("isMobile:", isMobile)
+if (!viewportReady) {
+  return null
+}
      return (
 <>
 
@@ -341,16 +375,35 @@ console.log("isMobile:", isMobile)
       </Link>
     </div>
     
-    <HTMLFlipBook
-  key={isMobile ? "mobile" : "desktop"}
-  width={isMobile ? 320 : 500}
-  height={isMobile ? 560 : 700}
-  maxShadowOpacity={0.1}
-  drawShadow={true}
-  showCover={true}
-  size="fixed"
-  onFlip={playPageSound}
+    <div
+  className="bookViewport"
+  style={{
+    width: `${
+      (isMobile ? 320 : 1000) * bookScale
+    }px`,
+    height: `${
+      (isMobile ? 560 : 700) * bookScale
+    }px`
+  }}
 >
+  <div
+    className="bookScaler"
+    style={{
+      width: isMobile ? "320px" : "1000px",
+      height: isMobile ? "560px" : "700px",
+      transform: `scale(${bookScale})`
+    }}
+  >
+    <HTMLFlipBook
+      key={isMobile ? "mobile-book" : "desktop-book"}
+      width={isMobile ? 320 : 500}
+      height={isMobile ? 560 : 700}
+      maxShadowOpacity={0.1}
+      drawShadow={true}
+      showCover={true}
+      size="fixed"
+      onFlip={playPageSound}
+    >
    
       
         <div className="page-content cover">
@@ -463,6 +516,8 @@ console.log("isMobile:", isMobile)
         
       ))}
     </HTMLFlipBook>
+      </div>
+</div>
     </>
   );
 }

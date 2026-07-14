@@ -4,6 +4,21 @@
 import Link from "next/link"
 import { useState, useEffect, useRef } from "react"
 export default function Home() {
+  useEffect(() => {
+  const previousBodyOverflow = document.body.style.overflow
+  const previousHtmlOverflow = document.documentElement.style.overflow
+
+  document.body.style.overflowX = "hidden"
+  document.body.style.overflowY = "auto"
+
+  document.documentElement.style.overflowX = "hidden"
+  document.documentElement.style.overflowY = "auto"
+
+  return () => {
+    document.body.style.overflow = previousBodyOverflow
+    document.documentElement.style.overflow = previousHtmlOverflow
+  }
+}, [])
   
 
   const [boxFrame, setBoxFrame] = useState(1)
@@ -57,7 +72,11 @@ const playHover = () => {
       
 
     <div className="scene">
-
+{!boxOpen && (
+  <p className="deckHint">
+    Click the deck
+  </p>
+)}
     {/* CAJA */}
       <img
         className="box"

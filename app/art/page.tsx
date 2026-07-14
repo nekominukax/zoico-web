@@ -13,6 +13,7 @@ const [isMobile, setIsMobile] = useState(false)
 const [currentCard, setCurrentCard] = useState(0)
 const clickSound = useRef<HTMLAudioElement | null>(null)
 const sonido = useRef<HTMLAudioElement | null>(null)
+const [viewportReady, setViewportReady] = useState(false)
 
 if (!clickSound.current && typeof Audio !== "undefined") {
   clickSound.current = new Audio("/sounds/TearinPaper.wav")
@@ -45,17 +46,30 @@ function selectDeck(category: string){
 
 }
 useEffect(() => {
+  const previousBodyOverflow = document.body.style.overflow
+  const previousHtmlOverflow = document.documentElement.style.overflow
 
-  const checkMobile = () => {
+  document.body.style.overflow = "hidden"
+  document.documentElement.style.overflow = "hidden"
+
+  return () => {
+    document.body.style.overflow = previousBodyOverflow
+    document.documentElement.style.overflow = previousHtmlOverflow
+  }
+}, [])
+useEffect(() => {
+  const checkViewport = () => {
     setIsMobile(window.innerWidth <= 768)
+    setViewportReady(true)
   }
 
-  checkMobile()
+  checkViewport()
 
-  window.addEventListener("resize", checkMobile)
+  window.addEventListener("resize", checkViewport)
 
-  return () => window.removeEventListener("resize", checkMobile)
-
+  return () => {
+    window.removeEventListener("resize", checkViewport)
+  }
 }, [])
 const cardSets = {
       dino: [
@@ -145,97 +159,99 @@ function handleBack() {
 }
 const centerIndex = (visibleCards.length - 1) / 2
 if (isMobile) {
-
   return (
+    <main className="artPage artPageMobile">
 
-    <main className="artPage">
-
-      <div className="returnButton">
-
-        <img
-          src="/atras.png"
-          onClick={handleBack}
-          className="returnIcon"
-        />
-
-      </div>
-
-      <div className="categories">
-
-        <img
-          src="/ui/dinosaurios.png"
-          className={`categoryImage ${selectedCategory==="dino"?"activeCategory":""}`}
-          onClick={()=>selectDeck("dino")}
-        />
-
-        <img
-          src="/ui/environments.png"
-          className={`categoryImage ${selectedCategory==="env"?"activeCategory":""}`}
-          onClick={()=>selectDeck("env")}
-        />
-
-        <img
-          src="/ui/especiales.png"
-          className={`categoryImage ${selectedCategory==="special"?"activeCategory":""}`}
-          onClick={()=>selectDeck("special")}
-        />
-
+      <div className="returnContainer">
+        <Link href="/">
+          <img
+            src="/atras.png"
+            className="returnIcon"
+            alt="Volver"
+          />
+        </Link>
       </div>
 
       {selectedCategory && (
-
         <div className="mobileGallery">
 
           <img
-
             src={mobileCards[currentCard]}
-
             className="mobileCard"
-
+            alt=""
           />
 
           <div className="mobileControls">
 
             <button
-
-              disabled={currentCard===0}
-
-              onClick={()=>setCurrentCard(currentCard-1)}
-
+              disabled={currentCard === 0}
+              onClick={() => {
+                if (currentCard > 0) {
+                  setCurrentCard(currentCard - 1)
+                }
+              }}
             >
-
               ◀
-
             </button>
 
             <span>
-
-              {currentCard+1} / {mobileCards.length}
-
+              {currentCard + 1} / {mobileCards.length}
             </span>
 
             <button
-
-              disabled={currentCard===mobileCards.length-1}
-
-              onClick={()=>setCurrentCard(currentCard+1)}
-
+              disabled={currentCard >= mobileCards.length - 1}
+              onClick={() => {
+                if (currentCard < mobileCards.length - 1) {
+                  setCurrentCard(currentCard + 1)
+                }
+              }}
             >
-
               ▶
-
             </button>
 
           </div>
 
         </div>
-
       )}
 
+      <div className="mobileCategories">
+
+        <img
+          src="/ui/dinosaurios.png"
+          className={`categoryImage ${
+            selectedCategory === "dino" ? "activeCategory" : ""
+          }`}
+          onClick={() => selectDeck("dino")}
+          alt="Dinosaurios"
+        />
+
+        <img
+          src="/ui/environments.png"
+          className={`categoryImage ${
+            selectedCategory === "env" ? "activeCategory" : ""
+          }`}
+          onClick={() => selectDeck("env")}
+          alt="Environments"
+        />
+
+        <img
+          src="/ui/especiales.png"
+          className={`categoryImage ${
+            selectedCategory === "special" ? "activeCategory" : ""
+          }`}
+          onClick={() => selectDeck("special")}
+          alt="Especiales"
+        />
+
+      </div>
+
     </main>
-
   )
+}
 
+
+if (!viewportReady) {
+  return null
 }
   return (
 
@@ -243,14 +259,14 @@ if (isMobile) {
 
       {/* BOTON VOLVER */}
 
-<div className="returnButton">
-
-  <img
-    src="/atras.png"
-    onClick={handleBack}
-    className="returnIcon"
-  />
-
+<div className="returnContainer">
+  <Link href="/">
+    <img
+      src="/atras.png"
+      className="returnIcon"
+      alt="Volver"
+    />
+  </Link>
 </div>
 
       
