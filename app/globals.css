@@ -1401,31 +1401,21 @@ font-size:1.1rem;
 
 /* Banner de escritorio oculto */
 .homePage .desktopBanner{
-  display:none;
+  display:none !important;
 }
 
 /* Banner específico de móvil */
 .homePage .mobileBanner{
-  display:block;
-
+  display:block !important;
   width:100%;
+  height:auto;
   max-width:none;
   max-height:none;
-
-  height:auto;
-
   object-fit:contain;
 }
 
 /* Por si solo tienes projectBanner y no mobileBanner */
-.homePage .projectBanner{
-  display:block;
 
-  width:100%;
-  max-width:100%;
-
-  height:auto;
-}
   .desktopBanner{
     display:none;
   }
