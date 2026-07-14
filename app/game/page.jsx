@@ -286,7 +286,7 @@ useEffect(() => {
       description2:(
       <> <strong>Flying</strong>: Has an icon with wings. You can move them to a different environment at any time. The new environment has to be a playable environment for that animal and also, have food available of its specific diet. You can also place them in environments that does not belong to you.",
       </>),
-      imagen13:<img src="/intelligence.png" style={{float:'right',width:'15%',height:'auto'}}/>,
+      imagen13:<img src="/inteligencia.png" style={{float:'right',width:'15%',height:'auto'}}/>,
       description3: (
         <><strong>Intelligent</strong>: Has a brain icon. You can play the Sapience card on them, which automatically ends the round and awards 50 points to the player who uses it.,
         </>),
