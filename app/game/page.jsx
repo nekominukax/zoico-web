@@ -234,7 +234,7 @@ useEffect(() => {
     id: "010",
     name: "End of game",
       description: "The game ends when a player runs out of cards, or when someone plays a “Sapience” card on an intelligent animal.",
-      imagen2:<img src="/sapiencia.png" style={{width:'80%',height:'auto', paddingLeft: '20%'}}/>,
+      imagen2:<img src="/Sapiencia.png" style={{width:'80%',height:'auto', paddingLeft: '20%'}}/>,
       description1: "When the game ends, each player counts their points, and the player with the most victory points wins.",
 
     nombre: "Environments",
